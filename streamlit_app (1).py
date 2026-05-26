@@ -5,16 +5,13 @@ st.title("LLM 응답 웹 앱")
 
 # API Key를 session_state에 저장
 if "api_key" not in st.session_state:
-    st.session_state.api_key = ""
+    st.session_state["api_key"] = ""
 
 api_key = st.text_input(
     "OpenAI API Key",
     type="password",
-    value=st.session_state.api_key
+    key="api_key"
 )
-
-if api_key:
-    st.session_state.api_key = api_key
 
 @st.cache_data
 def get_llm_response(api_key, prompt):
